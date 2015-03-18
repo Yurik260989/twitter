@@ -40,5 +40,11 @@ module SessionsHelper
     session[:return_to] = request.url if request.get?
   end
   
+  def signed_in_user
+      unless signed_in?
+        flash[:danger] = "Please sign in."
+        redirect_to signin_url
+      end    
+    end
   
 end
